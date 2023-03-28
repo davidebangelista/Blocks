@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <title>Blocks Game</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<input type="checkbox" id="train" onclick="train()">
+  <label for="training"> Use training Numbers</label>
 
 <script>
    var game = 0;
@@ -17,32 +19,48 @@
       }
    }
 
-   function Start(ev) {
-   if( sessionEnd == 0) {
-   sessionEnd = 1;
-      setTimeout("Stop()", 61000);  // Debug
-      game = 1;
-      ev.target.style.backgroundColor = "white";
-      ev.target.style.color = "black";
-      ev.target.style.border = "none";
-      document.getElementById("random").innerHTML = "";
-      shuffle(arr);
-      for (var i = 0; i < arr.length; i++) {
+function train(){ 
 
-         document.getElementById("random").innerHTML += "<td> <img draggable='true' ondragstart='drag(event)' src='Bloc/" + arr[i] + ".png' id='Img" + arr[i] + "' /></td>";
+var train = document.getElementById("train").checked;
 
-      }
-      document.getElementById("Time").innerHTML = 0;
-
-      setInterval(Clock, 1000);
+if( train == false ){ 
+for( var i = 0; i < box[i]; i++ ){
+   document.getElementById("box" + box[i]).style.backgroundImage = "";
+ }
+} else {
+   for( var i = 0; i < box[i]; i++ ){
+   document.getElementById("box" + box[i]).style.backgroundImage = "url('Bloc/Empty/" + box[i] +".png')";
+ }  
 }
+
+ }
+
+   function Start(ev) {
+      if (sessionEnd == 0) {
+         sessionEnd = 1;
+         setTimeout("Stop()", 61000);  // Debug
+         game = 1;
+         ev.target.style.backgroundColor = "white";
+         ev.target.style.color = "black";
+         ev.target.style.border = "none";
+         document.getElementById("random").innerHTML = "";
+         shuffle(arr);
+         for (var i = 0; i < arr.length; i++) {
+
+            document.getElementById("random").innerHTML += "<td> <img draggable='true' ondragstart='drag(event)' src='Bloc/" + arr[i] + ".png' id='Img" + arr[i] + "' /></td>";
+
+         }
+         document.getElementById("Time").innerHTML = 0;
+
+         setInterval(Clock, 1000);
+      }
    }
 
-   function Check (){
-         if (!document.getElementById("random").innerHTML.includes("img")) {
-            Stop();
-         }
+   function Check() {
+      if (!document.getElementById("random").innerHTML.includes("img")) {
+         Stop();
       }
+   }
 
 
    function shuffle(array) {
@@ -74,13 +92,13 @@
 
    function drop(ev) {
       if (game == 1) {
-     
-      
+
+
          ev.preventDefault();
          var data = ev.dataTransfer.getData("text");
          document.getElementById(data).style.margin = "0%";
-        // document.getElementById(data).style.width = "100%";
-        // document.getElementById(data).style.height = "100%";
+         // document.getElementById(data).style.width = "100%";
+         // document.getElementById(data).style.height = "100%";
          document.getElementById(data).style.border = "none";
          ev.target.appendChild(document.getElementById(data));
          Check();
@@ -93,8 +111,8 @@
       game = 0;
 
       for (var i = 0; i < box.length; i++) {
-console.log(box[i]);
-         if (document.getElementById("box" + box[i]).innerHTML.split("Img")[1].split("style")[0].replace(" ", "").replace( "\"", "") != box[i] ) {
+         console.log(box[i]);
+         if (document.getElementById("box" + box[i]).innerHTML.split("Img")[1].split("style")[0].replace(" ", "").replace("\"", "") != box[i]) {
             document.getElementById("box" + box[i]).style.border = "5px solid red";
          } else {
             document.getElementById("box" + box[i]).style.border = "5px solid green";
@@ -131,12 +149,12 @@ console.log(box[i]);
       margin-right: auto;
       color: white;
    }
-   
+
    table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+   }
 </style>
 
 <p id="Time" onclick="Start(event)">Start</p> <br>
@@ -145,38 +163,83 @@ console.log(box[i]);
 
 
 <table>
-<tr>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/1.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box1"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/2.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box2"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/3.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box3"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/4.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box4"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/5.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box5"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/6.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box6"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/7.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box7"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/8.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box8"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/9.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box9"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/10.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box10"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/11.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box11"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/12.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box12"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/13.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box13"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/14.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box14"></div> </td>
-<td> <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/15.png'); background-size: 100%;" ondragover="allowDrop(event)" id="box15"></div> </td>
-</tr>
-  <tr id="random">
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img1" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img2" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img3" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img4" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img5" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img6" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img7" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img8" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img9" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img10" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img11" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img12" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img13" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img14" /></td>
-    <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img15" /></td>
-  </tr>
+   <tr>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/1.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box1"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/2.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box2"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/3.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box3"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/4.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box4"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/5.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box5"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/6.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box6"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/7.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box7"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/8.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box8"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/9.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box9"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/10.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box10"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/11.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box11"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/12.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box12"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/13.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box13"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/14.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box14"></div>
+      </td>
+      <td>
+         <div ondrop="drop(event)" style="background-image: url('Bloc/Empty/15.png'); background-size: 100%;"
+            ondragover="allowDrop(event)" id="box15"></div>
+      </td>
+   </tr>
+   <tr id="random">
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img1" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img2" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img3" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img4" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img5" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img6" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img7" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img8" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img9" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img10" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img11" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img12" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img13" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img14" /></td>
+      <td><img draggable="true" ondragstart="drag(event)" src="Bloc/Unknown.png" id="Img15" /></td>
+   </tr>
 </table>
