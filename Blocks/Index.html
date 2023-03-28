@@ -90,8 +90,8 @@
       game = 0;
 
       for (var i = 0; i < box.length; i++) {
-
-         if (document.getElementById("box" + box[i]).innerHTML.split("Img")[1] != box[i] + '" style="margin: 0%; width: 100%; height: 100%; border: medium none;">') {
+console.log(box[i]);
+         if (document.getElementById("box" + box[i]).innerHTML.split("Img")[1].split("style")[0].replace(" ", "").replace( "\"", "") != box[i] ) {
             document.getElementById("box" + box[i]).style.border = "5px solid red";
          } else {
             document.getElementById("box" + box[i]).style.border = "5px solid green";
