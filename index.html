@@ -15,6 +15,7 @@
       target="_blank">Scoreboard</a>
 
    <script>
+      sessionEnd = false;
       fail = false;
       var game = 0;
       var Time = 0;
@@ -57,8 +58,9 @@ function Clear() {
       }
 
       function Start(ev) {
-         if (game == 0) {
+         if (game == 0 && sessionEnd == false) {
             game = 1;
+
             setTimeout("Stop()", 61000);  // Debug
             game = 1;
             ev.target.style.backgroundColor = "red";
@@ -73,9 +75,10 @@ function Clear() {
             document.getElementById("Time").innerHTML = 0;
 
             setInterval(Clock, 1000);
-         } else {
+         } else if( sessionEnd == false ){
             ev.target.style.backgroundColor = "white";
             ev.target.style.border = "none";
+            sessionEnd = true;
             Stop();
          }
       }
