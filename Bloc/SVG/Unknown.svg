@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100px"
+   height="175px"
+   viewBox="0 0 100 175"
+   version="1.1"
+   id="SVGRoot"
+   sodipodi:docname="Unknown.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)">
+  <defs
+     id="defs2467" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4.0296619"
+     inkscape:cx="57.765062"
+     inkscape:cy="79.025903"
+     inkscape:document-units="px"
+     inkscape:current-layer="g1615-77-6"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1005"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2470">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1556-6-89-4"
+       transform="matrix(1.0039872,0,0,1.0068481,646.22656,-370.31007)">
+      <g
+         id="g1615-77-6"
+         transform="translate(-749.99373,-295.09648)">
+        <rect
+           style="fill:#e75100;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect1407-2-64-2"
+           width="98.60289"
+           height="172.80972"
+           x="106.83356"
+           y="663.38788" />
+        <text
+           xml:space="preserve"
+           style="font-size:50px;line-height:0.65;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif';text-align:center;letter-spacing:0px;text-anchor:middle"
+           x="155.64673"
+           y="767.99341"
+           id="text1521-6-3-5"><tspan
+             sodipodi:role="line"
+             x="155.64673"
+             y="767.99341"
+             id="tspan1529-7-0-8"
+             style="font-size:50px">?</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

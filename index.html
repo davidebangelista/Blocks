@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <title>Blocks Game</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   <input type="checkbox" onclick="checkPost();"  id="post">
+   <label for="post"> Post my scores</label> <button onclick="Clear();" >Clear name</button> <a style="display: block;" href="scoreboard.php"
+      target="_blank">Scoreboard</a>
+
+   <script>
+      fail = false;
+      var game = 0;
+      var Time = 0;
+      var box = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+      var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+      function Clock() {
+         if (game == 1) {
+            Time = Time + 1;
+            Time = Math.floor(Time);
+            document.getElementById("Time").innerHTML = Time;
+
+         }
+      }
+
+      function checkPost() {
+         if(localStorage.getItem("name") == null){
+            var name = prompt("Enter your name:");
+            localStorage.setItem("name", name);
+         } }
+
+      
+function Clear() {
+   localStorage.removeItem("name");
+   checkPost();
+}
+
+      function post() {
+         if (document.getElementById("post").checked == true) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.load = function () {
+               if (this.status != 200) {
+                  alert("Server Error!");
+               }
+            };
+
+            if (Time > 59 || fail == true) { Time = "FAIL" }
+            xhttp.open("GET", "post.php?name=" + localStorage.getItem("name") + "&seconds=" + Time, true);
+            xhttp.send();
+         }
+      }
+
+      function Start(ev) {
+         if (game == 0) {
+            game = 1;
+            setTimeout("Stop()", 61000);  // Debug
+            game = 1;
+            ev.target.style.backgroundColor = "red";
+            ev.target.style.color = "black";
+            document.getElementById("random").innerHTML = "";
+            shuffle(arr);
+            for (var i = 0; i < arr.length; i++) {
+
+               document.getElementById("random").innerHTML += "<img src='Bloc/" + arr[i] + ".png' id='Img" + arr[i] + "' />";
+
+            }
+            document.getElementById("Time").innerHTML = 0;
+
+            setInterval(Clock, 1000);
+         } else {
+            ev.target.style.backgroundColor = "white";
+            ev.target.style.border = "none";
+            Stop();
+         }
+      }
+
+      function Check() {
+         if (!document.getElementById("random").innerHTML.includes("img")) {
+            Stop();
+         }
+      }
+
+
+      function shuffle(array) {
+         let currentIndex = array.length, randomIndex;
+
+         // While there remain elements to shuffle.
+         while (currentIndex != 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+               array[randomIndex], array[currentIndex]];
+         }
+
+         return array;
+      }
+
+
+      function allowDrop(ev) {
+         if (game == 1) { ev.preventDefault(); }
+      }
+
+      function drag(ev) {
+         ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function Stop() {
+         game = 0;
+         for (var i = 0; i < box.length; i++) {
+
+            if (document.getElementById("random").outerHTML.split("Bloc/")[i+1].split(".png")[0] != box[i]) {
+               Time = 60; document.getElementById("Img" + box[i]).style.border = "5px solid red";
+            } else {
+               document.getElementById("Img" + box[i]).style.border = "5px solid green";
+            }
+
+         }
+         post();
+      }
+   </script>
+
+   <style>
+
+      ul {
+         width: 98%;
+      }
+
+      img {
+         margin: 5px;
+         display: inline-block;
+         width: 5%;
+         border: 5px solid white;
+      }
+
+      #Time {
+         width: 10%;
+         text-align: center;
+         background-color: green;
+         border: 2px solid black;
+         display: block;
+         padding: 5px;
+         margin-left: auto;
+         margin-right: auto;
+         color: white;
+      }
+   </style>
+
+   <p id="Time" onclick="Start(event)">Start</p>
+   <hr>
+
+
+
+   <ul id="random">
+      <img src="Bloc/Unknown.png" id="Img1" />
+      <img src="Bloc/Unknown.png" id="Img2" />
+      <img src="Bloc/Unknown.png" id="Img3" />
+      <img src="Bloc/Unknown.png" id="Img4" />
+      <img src="Bloc/Unknown.png" id="Img5" />
+      <img src="Bloc/Unknown.png" id="Img6" />
+      <img src="Bloc/Unknown.png" id="Img7" />
+      <img src="Bloc/Unknown.png" id="Img8" />
+      <img src="Bloc/Unknown.png" id="Img9" />
+      <img src="Bloc/Unknown.png" id="Img10" />
+      <img src="Bloc/Unknown.png" id="Img11" />
+      <img src="Bloc/Unknown.png" id="Img12" />
+      <img src="Bloc/Unknown.png" id="Img13" />
+      <img src="Bloc/Unknown.png" id="Img14" />
+      <img src="Bloc/Unknown.png" id="Img15" />
+   </ul>
+   <script>
+      $(function () {
+         $("#random").sortable();
+      });
+   </script>
+
+
+</body>
+
+</html>
