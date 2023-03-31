@@ -10,12 +10,12 @@
 <body>
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+      <script src="jquery.ui.touch-punch.js"></script>
    <input type="checkbox" onclick="checkPost();"  id="post">
    <label for="post"> Post my scores</label> <button onclick="Clear();" >Clear name</button> <a style="display: block;" href="scoreboard.php"
       target="_blank">Scoreboard</a>
 
    <script>
-      sessionEnd = false;
       fail = false;
       var game = 0;
       var Time = 0;
@@ -58,9 +58,8 @@ function Clear() {
       }
 
       function Start(ev) {
-         if (game == 0 && sessionEnd == false) {
+         if (game == 0) {
             game = 1;
-
             setTimeout("Stop()", 61000);  // Debug
             game = 1;
             ev.target.style.backgroundColor = "red";
@@ -75,10 +74,9 @@ function Clear() {
             document.getElementById("Time").innerHTML = 0;
 
             setInterval(Clock, 1000);
-         } else if( sessionEnd == false ){
+         } else {
             ev.target.style.backgroundColor = "white";
             ev.target.style.border = "none";
-            sessionEnd = true;
             Stop();
          }
       }
@@ -183,6 +181,7 @@ function Clear() {
    <script>
       $(function () {
          $("#random").sortable();
+         $("#random").disableSelection();
       });
    </script>
 
