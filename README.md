@@ -7,7 +7,7 @@ A simple block game
 Install php and apache2 onto a server.
 
 ```bash
- sudo apt install php8
+ sudo apt install php8 apache2
 ```
    Then, add these to your server directory.
 ```bash
